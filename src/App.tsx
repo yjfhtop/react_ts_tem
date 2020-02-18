@@ -1,9 +1,17 @@
 import React from 'react';
+import {Provider} from "react-redux";
+import store from "@/stores";
+
+
+import Text from '@/components/test'
 
 const App = () => {
     return (
-        <div className="App">
-        </div>
+        <Provider store={store}>
+            <div>
+                <Text></Text>
+            </div>
+        </Provider>
     );
 }
 

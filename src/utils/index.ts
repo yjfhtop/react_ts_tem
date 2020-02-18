@@ -25,7 +25,7 @@ export function queryUrlToObj(str: string): queryObj{
  * @constructor
  */
 type ENWeek = 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday'
-export function ENWeekToCN(name: ENWeek) {
+export function ENWeekToCN(name: ENWeek): string {
     if (!name) {
         return ''
     }
@@ -60,13 +60,13 @@ export function ENWeekToCN(name: ENWeek) {
 }
 
 /**
- * 获取指定长度是字符串
+ * 获取指定长度的字符串
  * @param len
  * @param str
  * @returns {string}
  */
 const randomStr: string = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012346789' // 随机所需的字符串
-export function randomStrLen(len: number = 30, str: string = randomStr) {
+export function randomStrLen(len: number = 30, str: string = randomStr): string {
     const strArr: string[] = []
     for (let i = 0; i < len; i++) {
         const randomIndex = Math.floor((Math.random() * str.length))
