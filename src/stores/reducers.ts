@@ -1,7 +1,10 @@
 import permission from './permission/reducer'
 import user from './user/reducer'
 
-export default {
+
+const reducers: StoreType.Reducers = {
     permission,
-    user
+    user,
 }
+
+export default reducers

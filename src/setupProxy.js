@@ -3,5 +3,11 @@
 const proxy = require('http-proxy-middleware');
 
 module.exports = function (app) {
-    app.use(proxy(process.env.REACT_APP_BASE_API, {target: process.env.REACT_APP_BASE_API_TO_PATH}));
+    app.use(proxy(process.env.REACT_APP_BASE_API, {
+        target: process.env.REACT_APP_BASE_API_TO_PATH,
+        changeOrigin: true,
+        pathRewrite: {
+            ['^' + process.env.REACT_APP_BASE_API]: ''
+        }
+    }));
 };
