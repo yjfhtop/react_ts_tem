@@ -1,4 +1,4 @@
-import { RouteConfig } from './types'
+import { RouteConfig } from "react-router-config";
 import baseRouter, { notFoundRouter } from './base'
 
 

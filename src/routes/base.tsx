@@ -1,5 +1,5 @@
 import {lazy} from "react";
-import { RouteConfig } from './types'
+import { RouteConfig } from "react-router-config";
 
 import baseHOC from '@/hoc/base'
 
