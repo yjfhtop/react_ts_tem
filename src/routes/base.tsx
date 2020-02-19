@@ -1,6 +1,8 @@
 import {lazy} from "react";
 import { RouteConfig } from './types'
 
+import baseHOC from '@/hoc/base'
+
 const home = lazy(() => import("../view/home/home"));
 const login = lazy(() => import("../view/login/login"));
 const notFound = lazy(() => import("../view/errPage/404/404"));
@@ -11,7 +13,7 @@ const routers: RouteConfig[] = [
         path: '/',
         exact: true,
         // component: baseRouterHOC(suspenseComponentHOC(home)),
-        component: home,
+        component: baseHOC(home),
         meta: {
             title: '首页'
         }
