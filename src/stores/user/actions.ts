@@ -20,10 +20,10 @@ export function updateTokenAct<T = string>(token: T): StoreType.Action<T> {
 
 
 // 使用 redux-thunk
-export function userLoginAct(loginData: ApiType.User.UserLogin) {
+export function userLoginAct(loginData: ApiType.User.UserLogin, reqConfig?: ApiType.ReqConfig) {
     return (dispatch: Dispatch) => {
         return new Promise((resolve, reject) => {
-            userLogin(loginData).then(data => {
+            userLogin(loginData, reqConfig).then(data => {
                 dispatch(updateTokenAct(data.data.token))
                 resolve(data)
             }).catch(err => {
