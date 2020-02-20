@@ -5,7 +5,7 @@ import baseHOC from '@/hoc/base'
 import permissionHOC from '@/hoc/permission'
 
 const home = lazy(() => import("../view/home/home"));
-const login = lazy(() => import("../view/login/login"));
+const login = lazy(() => import("../view/account/login/login"));
 const notFound = lazy(() => import("../view/errPage/404/404"));
 
 const routers: RouteConfig[] = [
@@ -13,7 +13,6 @@ const routers: RouteConfig[] = [
         key: 'home',
         path: '/',
         exact: true,
-        // component: baseRouterHOC(suspenseComponentHOC(home)),
         component: permissionHOC(baseHOC(home)),
         meta: {
             title: '首页'
@@ -24,7 +23,6 @@ const routers: RouteConfig[] = [
         path: '/login',
         exact: true,
         component: permissionHOC(baseHOC(login)),
-        // component: login,
         meta: {
             title: '首页'
         }
@@ -32,7 +30,7 @@ const routers: RouteConfig[] = [
     {
         key: '404',
         path: '/404',
-        component: notFound,
+        component: baseHOC(notFound),
         meta: {
             title: '404'
         }
