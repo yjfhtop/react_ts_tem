@@ -25,6 +25,7 @@ export default function (Com: ComponentType<any>) {
         const nowKey: string = props.route?.key as string // 作为路由唯一标识
         let toPathOver = `/login?redirectTo=${encodeURIComponent(nowPath)}`
 
+        console.log(props, 'props');
 
         useEffect(() => {
             if (state.token) {
