@@ -3,8 +3,8 @@ import constant from './constants'
 
 
 const defaultState: StoreType.Permission = {
-    whitelist: [],
-    permissionRoutes: []
+    whitelist: ['login', '404'],
+    permissionRoutes: {}
 }
 
 

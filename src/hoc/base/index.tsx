@@ -10,7 +10,7 @@ export default function (Com: ComponentType<any>) {
             }
         }, [title])
         return (
-            <Com {...prop}></Com>
+            <Com {...prop} />
         )
     }
 }

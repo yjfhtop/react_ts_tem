@@ -6,6 +6,7 @@ declare namespace StoreType {
     }
 
     interface UserInfo {
+        id: string
         name?: string,
         headPortrait?: string
     }
@@ -13,6 +14,7 @@ declare namespace StoreType {
     // 权限路由， 可能 有其他参数
     interface PermissionRoute {
         path: string,
+        key: string
     }
 
 
@@ -23,7 +25,9 @@ declare namespace StoreType {
 
     interface Permission {
         whitelist: string[],
-        permissionRoutes: PermissionRoute[]
+        permissionRoutes: {
+            [key: string]: PermissionRoute
+        }
     }
 
     // 总store 的 state
