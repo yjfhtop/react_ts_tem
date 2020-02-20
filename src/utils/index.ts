@@ -7,10 +7,16 @@ interface queryObj {
 }
 
 export function queryUrlToObj(str: string): queryObj{
-    const newStr = decodeURIComponent(str)
+    if (str) {
+        return {}
+    }
+
     let obj: queryObj = {};
-    let arr1 = newStr.split("?");
-    let arr2 = (arr1[1] ?arr1[1] : arr1[0]).split("&");
+
+    let indexof = str.indexOf('?')
+    let newStrs = decodeURIComponent(str.slice(indexof + 1))
+
+    let arr2 = newStrs.split("&");
     for(let i=0 ; i < arr2.length; i++){
         let res = arr2[i].split("=");
         obj[res[0]] = res[1];

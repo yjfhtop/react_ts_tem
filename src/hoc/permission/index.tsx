@@ -45,7 +45,7 @@ export default function (Com: ComponentType<any>) {
                 setAjaxOver(true)
             }
 
-        }, [])
+        }, [dispatch, state.userInfo, state.token])
 
 
         if (ajaxOver) {

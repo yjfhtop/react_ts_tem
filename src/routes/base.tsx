@@ -23,8 +23,8 @@ const routers: RouteConfig[] = [
         key: 'login',
         path: '/login',
         exact: true,
-        // component: baseRouterHOC(suspenseComponentHOC(login)),
-        component: login,
+        component: permissionHOC(baseHOC(login)),
+        // component: login,
         meta: {
             title: '首页'
         }
