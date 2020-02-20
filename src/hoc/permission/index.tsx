@@ -34,6 +34,9 @@ export default function (Com: ComponentType<any>) {
                 } else {
                     // 相当于 用户手动 刷新
                     // 获取用户相关信息
+
+                    console.log(nowPath, JSON.parse(JSON.stringify(state.userInfo)) ,'userInfo--------');
+
                     const p = (dispatch(getUserInfoAct({ showLogin: true, hideErrInfo: false })) as any) as Promise<ApiType.ResData>
                     p.then(() => {
                         setAjaxOver(true)
@@ -45,7 +48,7 @@ export default function (Com: ComponentType<any>) {
                 setAjaxOver(true)
             }
 
-        }, [dispatch, state.userInfo, state.token])
+        }, [])
 
 
         if (ajaxOver) {

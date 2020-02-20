@@ -1,5 +1,5 @@
 import constant from './constants'
-import { setToken, getToken } from '@/utils/auth'
+import { setToken, getToken, removeToken } from '@/utils/auth'
 
 
 const defaultState: StoreType.User = {
@@ -15,7 +15,11 @@ export default function (state = defaultState, action: StoreType.Action): StoreT
         case constant.userInfo:
             return {...state, userInfo: action.value}
         case constant.token:
-            setToken(action.value)
+            if (action.value) {
+                setToken(action.value)
+            } else {
+                removeToken()
+            }
             return {...state, token: action.value}
         default:
             return state

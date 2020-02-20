@@ -2,6 +2,7 @@
  * 查询字符串转对象
  * @param str
  */
+
 interface queryObj {
     [key: string]: string
 }
@@ -96,7 +97,7 @@ export function getType(data: any): string {
  * @param rightValue
  */
 export function deepCompare(leftValue: any, rightValue: any): boolean {
-    if (arguments.length < 2) throw "Incorrect number of parameters";
+    if (arguments.length < 2) throw new Error('Incorrect number of parameters')
     let sourceType = getType(leftValue);
     if (sourceType !== getType(rightValue)) return false;
     // Not objects and arrays
