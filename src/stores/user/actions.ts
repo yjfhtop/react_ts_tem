@@ -3,6 +3,7 @@ import constants from './constants'
 import { userLogin, getUserInfo } from '@/api/user'
 import { updatePermissionRouteAct } from '../permission/actions'
 import allRouter from '@/routes'
+import {RouteConfig} from "react-router-config";
 
 
 export function updateUserInfoAct<T = StoreType.UserInfo>(userInfo: T): StoreType.Action<T> {
@@ -47,19 +48,22 @@ export function getUserInfoAct(reqConfig?: ApiType.ReqConfig) {
                 // 暂时不使用后台 权限 e
 
                 // 获取用户信息后 将所有路由添加至权限路由 暂时用法 s
-                const routes: { [key: string]: StoreType.PermissionRoute } = {}
-                allRouter.forEach(item => {
-                    if (item.key) {
-                        /*let citem: StoreType.PermissionRoute = {
-                            'key': item.key!,
-                            'path': item.path
-                        }*/
-                        routes[item.key] = {
-                            key: item.key as string,
-                            path: item.path as string
+                const routes: { [key: string]: StoreType.PermissionRoute } = {};
+
+                function getRouters(allRouter: RouteConfig[]) {
+                    allRouter.forEach(item => {
+                        if (item.key) {
+                            routes[item.key] = {
+                                key: item.key as string,
+                                path: item.path as string
+                            }
                         }
-                    }
-                })
+                        if (item.routes) {
+                            getRouters(item.routes)
+                        }
+                    })
+                }
+                getRouters(allRouter)
                 // 获取用户信息后 将所有路由添加至权限路由 暂时用法 e
 
                 dispatch(updatePermissionRouteAct(routes))
